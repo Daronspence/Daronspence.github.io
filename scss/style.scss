@@ -1,0 +1,103 @@
+@import "normalize";
+@import "mixins";
+@import "navigation";
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+html {
+	font-size: 18px;
+	font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
+}
+body {
+	background: #efefef;
+	padding: 0;
+	margin: 0;
+}
+h2,h3,h4,h5,h6 {
+	font-family: 'Noto Serif', Georgia, serif;
+	text-transform: uppercase;
+}
+a {
+	text-decoration: none;
+	font-family: 'Noto Serif', Georgia, serif;
+	transition: all 200ms ease;
+	color: blue;
+	&:hover{
+		color: rgba(blue, .6);
+	}
+}
+.container {
+	@include container
+}
+.content-wrapper {
+	@include container;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: stretch;
+}
+#main-content {
+	flex: 1.6 1 0;
+	padding: 2rem 0 2rem 1rem;
+}
+#sidebar {
+	flex: 1 1 0;
+	order: -1;
+	padding: 2rem 1rem 2rem 0;
+}
+.widget{
+	background: white;
+	@include border-shadow;
+	padding: .5rem 1rem;
+	margin-bottom: 2rem;
+}
+
+.widget ul {
+	padding: 0;
+	list-style-type: none;
+}
+.post {
+	background: white;
+	@include border-shadow;
+	padding: .5rem 1rem;
+	margin-bottom: 2rem;
+	position: relative;
+}
+.post:after {
+	content: '\f0f6  Blog';
+	font-family: 'FontAwesome', 'Noto Serif';
+	font-size: .8rem;
+	position: absolute;
+	top:0;
+	right: 0;
+	background: #eee;
+	padding: .5rem 1rem;
+	margin: .5rem;
+	@include border-shadow;
+}
+.post-book:after{
+	@extend .post:after;
+	content: '\f02d  Book Review';
+}
+.post-movie:after{
+	@extend .post:after;
+	content: '\f03d  Movie';
+}
+.author {
+	font-weight: bold;
+	span {
+		font-weight: normal;
+		font-style: italic;
+	}
+}
+footer {
+	background: #444;
+	color: #777;
+	text-align: center;
+	.container {
+		display: flex;
+		div{
+			flex: 1 1 0;
+			padding: 1rem;
+		}
+	}
+}
